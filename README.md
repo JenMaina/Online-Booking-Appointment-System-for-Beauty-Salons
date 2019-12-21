@@ -1,8 +1,2 @@
 # Online-Booking-Appointment-System-for-Beauty-Salons
-Online Booking Appointment System for Beauty Salons (Lingayen, Pangasinan)
-
-Web-based System
--php
--Ubold Bootstrap
--ajax
--jQuery
+Online Booking Appointment System for Beauty Salons (Lingayen, Pangasinan) is an Web-based System build with UBOLD Bootstrap framework, PHP, mySQL.
