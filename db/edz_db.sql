@@ -1,0 +1,642 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 02, 2019 at 09:19 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.2.18
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `edz_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `dob` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact` varchar(30) NOT NULL,
+  `image` blob NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`, `name`, `dob`, `address`, `email`, `contact`, `image`) VALUES
+('admin', 'admin', 'Admin', '1997-12-10', 'Lingayen, Pangasinan', 'admin@admin.com', '09123456789', 0x313537343933393933315f393737372e6a7067);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `baner`
+--
+
+DROP TABLE IF EXISTS `baner`;
+CREATE TABLE IF NOT EXISTS `baner` (
+  `bid` int(15) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `msg` varchar(1000) NOT NULL,
+  `image` blob NOT NULL,
+  `sid` int(15) NOT NULL,
+  PRIMARY KEY (`bid`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `baner`
+--
+
+INSERT INTO `baner` (`bid`, `title`, `msg`, `image`, `sid`) VALUES
+(18, 'front', 'welcome to blissfully Novs', 0x313537313230353836345f383737392e6a7067, 4),
+(20, 'blissfully novs', 'Godbless', 0x313537313230363136325f383636342e6a7067, 4),
+(21, 'BLISS', 'THANK YOU!', 0x313537313230363632375f323737332e6a7067, 4),
+(22, 'Opening of Belis', 'Welcome', 0x313537313230383235325f363330382e6a7067, 2),
+(23, 'Belis', 'Welcome ', 0x313537313230383338305f343939382e6a7067, 2),
+(24, 'bla bla', 'Welcome Ulit', 0x313537313230383538345f373236392e6a7067, 2),
+(25, 'lemonblush', 'welcome', 0x313537313230393134385f383934392e6a7067, 3),
+(26, 'lemonblush', 'front', 0x313537313230393137325f343032392e6a7067, 3),
+(27, 'of lemonblush', 'customer', 0x313537313230393234385f383734352e6a7067, 3),
+(28, 'Bellissima.ph', 'Bellissima.ph', 0x313537313237313239365f343437392e6a7067, 2),
+(29, 'BLISSFULLY', 'Blissfully', 0x313537313237313333375f373939382e6a7067, 4),
+(31, 'J and L', 'aa', 0x313537313237313539395f373734352e6a7067, 1),
+(32, 'Lemon Blush', 'Lemon Blush', 0x313537313237313632335f393432352e6a7067, 3),
+(33, '50% Discount', 'Gupit Kuko', 0x313537313238333039365f343239362e6a7067, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE IF NOT EXISTS `book` (
+  `aid` int(15) NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) NOT NULL,
+  `datecreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dov` varchar(30) NOT NULL,
+  `tym` time NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `sid` int(15) NOT NULL,
+  `stfid` int(20) NOT NULL,
+  `serid` int(20) NOT NULL,
+  `simage` blob NOT NULL,
+  `sername` varchar(30) NOT NULL,
+  `rate` decimal(15,2) NOT NULL,
+  `duration` time NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `notif_status` int(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`aid`,`username`,`datecreated`,`fname`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`aid`, `username`, `datecreated`, `dov`, `tym`, `fname`, `sid`, `stfid`, `serid`, `simage`, `sername`, `rate`, `duration`, `status`, `notif_status`) VALUES
+(1, 'user', '2019-11-27 20:42:05', '12/07/2019', '09:00:00', 'Ednyl Soriano', 1, 1, 14, 0x313537303936393134345f373032322e6a7067, 'Hairspa w/ Free Haircut', '150.00', '00:00:00', 'DONE', 1),
+(2, 'user', '2019-11-27 20:42:52', '12/07/2019', '10:00:00', 'Ednyl Soriano', 1, 1, 14, 0x313537303936393134345f373032322e6a7067, 'Hairspa w/ Free Haircut', '150.00', '00:00:00', 'DONE', 1),
+(3, 'user1', '2019-11-27 20:43:27', '12/07/2019', '11:00:00', 'edz tae', 1, 1, 7, 0x313537303936393131365f383338312e6a7067, 'Haircut w/ Shampoo', '50.00', '00:00:00', 'Booked, waiting the for update...', 1),
+(4, 'user1', '2019-11-27 20:44:17', '12/07/2019', '12:00:00', 'edz tae', 1, 1, 7, 0x313537303936393131365f383338312e6a7067, 'Haircut w/ Shampoo', '50.00', '00:00:00', 'Booked, waiting the for update...', 1),
+(5, 'user', '2019-11-28 11:07:16', '12/07/2019', '09:00:00', 'Ednyl Soriano', 1, 1, 5, 0x313537303936393034365f323438392e6a7067, 'Cellophane w/ Free Haircut', '250.00', '00:00:00', 'Booked, waiting the for update...', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
+  `cid` int(15) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `gender` varchar(30) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `dob` varchar(30) NOT NULL,
+  `contact` varchar(30) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `image` blob,
+  PRIMARY KEY (`cid`,`email`,`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`cid`, `name`, `gender`, `address`, `dob`, `contact`, `email`, `username`, `password`, `image`) VALUES
+(1, 'Ednyl Soriano', 'male', 'Lingayen, Pangasinan', '2019-08-05', '09201011525', 'user@user.com', 'user', 'user', 0x313537343739393739365f383633372e6a7067),
+(2, 'edz tae', 'male', 'Lingayen, Pangasinan', '2019-08-05', '09201011525', 'user1@user.com', 'user1', 'user1', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fservice`
+--
+
+DROP TABLE IF EXISTS `fservice`;
+CREATE TABLE IF NOT EXISTS `fservice` (
+  `sid` int(15) NOT NULL,
+  `serid` int(15) NOT NULL,
+  PRIMARY KEY (`serid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fservice`
+--
+
+INSERT INTO `fservice` (`sid`, `serid`) VALUES
+(1, 5),
+(1, 7),
+(1, 16),
+(1, 19);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE IF NOT EXISTS `manager` (
+  `mid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `gender` varchar(30) NOT NULL,
+  `dob` varchar(30) NOT NULL,
+  `contact` varchar(30) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `city` varchar(30) NOT NULL DEFAULT 'Lingayen',
+  `image` blob,
+  PRIMARY KEY (`mid`)
+) ENGINE=MyISAM AUTO_INCREMENT=228 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`mid`, `name`, `gender`, `dob`, `contact`, `address`, `username`, `email`, `password`, `city`, `image`) VALUES
+(7, 'manager', 'male', '12/12/1212', '2132121', 'address manahger', 'manager', 'manager@manager.com', 'manager', 'Lingayen', 0x313537343934313730385f393635392e6a7067);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager_salon`
+--
+
+DROP TABLE IF EXISTS `manager_salon`;
+CREATE TABLE IF NOT EXISTS `manager_salon` (
+  `sid` int(20) NOT NULL,
+  `mid` int(20) NOT NULL,
+  PRIMARY KEY (`sid`,`mid`),
+  UNIQUE KEY `sid` (`sid`),
+  UNIQUE KEY `mid` (`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `manager_salon`
+--
+
+INSERT INTO `manager_salon` (`sid`, `mid`) VALUES
+(1, 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maps`
+--
+
+DROP TABLE IF EXISTS `maps`;
+CREATE TABLE IF NOT EXISTS `maps` (
+  `mapid` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `url` text NOT NULL,
+  PRIMARY KEY (`mapid`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `maps`
+--
+
+INSERT INTO `maps` (`mapid`, `sid`, `url`) VALUES
+(1, 1, ''),
+(3, 1, ''),
+(4, 1, ''),
+(5, 1, ''),
+(6, 1, ''),
+(7, 1, ''),
+(8, 1, ''),
+(2, 1, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+CREATE TABLE IF NOT EXISTS `rating` (
+  `riv` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `cid` int(20) NOT NULL,
+  `aid` int(20) NOT NULL,
+  `serid` int(20) NOT NULL,
+  `rating` int(20) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `comment` varchar(100) NOT NULL,
+  `datecreated` datetime NOT NULL,
+  PRIMARY KEY (`riv`,`aid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`riv`, `sid`, `cid`, `aid`, `serid`, `rating`, `title`, `comment`, `datecreated`) VALUES
+(1, 1, 1, 1, 14, 5, 'Excelent Service', 'haha', '2019-11-28 11:06:39'),
+(2, 1, 1, 2, 14, 4, 'Excelent Service', 'sdasdsada', '2019-11-28 11:12:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `revenue_salon`
+--
+
+DROP TABLE IF EXISTS `revenue_salon`;
+CREATE TABLE IF NOT EXISTS `revenue_salon` (
+  `riv` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `aid` int(20) NOT NULL,
+  `image` blob NOT NULL,
+  `sername` varchar(100) NOT NULL,
+  `rate` decimal(15,2) NOT NULL,
+  `tenpercent` decimal(15,2) NOT NULL,
+  `datedone` datetime NOT NULL,
+  PRIMARY KEY (`riv`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `revenue_salon`
+--
+
+INSERT INTO `revenue_salon` (`riv`, `sid`, `aid`, `image`, `sername`, `rate`, `tenpercent`, `datedone`) VALUES
+(1, 1, 1, 0x313537303936393134345f373032322e6a7067, 'Hairspa w/ Free Haircut', '150.00', '15.00', '2019-11-28 11:06:30'),
+(2, 1, 2, 0x313537303936393134345f373032322e6a7067, 'Hairspa w/ Free Haircut', '150.00', '15.00', '2019-11-28 11:12:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `salon`
+--
+
+DROP TABLE IF EXISTS `salon`;
+CREATE TABLE IF NOT EXISTS `salon` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `mid` int(20) DEFAULT NULL,
+  `sname` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `contact` varchar(30) NOT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `quotes` text,
+  `welcome` varchar(255) DEFAULT NULL,
+  `image` blob,
+  `status_salon` int(15) NOT NULL DEFAULT '0',
+  `notif_status` int(20) NOT NULL DEFAULT '0',
+  `datecreated1` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`sid`,`sname`)
+) ENGINE=MyISAM AUTO_INCREMENT=2324 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `salon`
+--
+
+INSERT INTO `salon` (`sid`, `mid`, `sname`, `address`, `city`, `contact`, `email`, `quotes`, `welcome`, `image`, `status_salon`, `notif_status`, `datecreated1`) VALUES
+(2, 0, 'Bellissima Salon.ph', 'Alvear 2 St. Lingayen, Pangasinan', 'Lingayen', '09123456789', 'bellisima@gmail.com', 'Love is in the HAIR', 'Welcome Welcome Welcome', 0x313537343933393933315f393737372e6a7067, 1, 2, '2019-11-17 23:27:15'),
+(3, 0, 'Lemon Blush Salons', 'Lingayen, Pangasinan', 'Lingayen', '09123456789', 'lemonblush@gmail.com', 'Improve your selfies see your stylist.', 'welcome kau po', 0x313537303139393931365f373430322e6a7067, 1, 2, '2019-11-17 23:27:15'),
+(1, 7, 'J&L Beauty Salon for Men & Women', 'Wawa Lingayen, Pangasinan', 'Lingayen', '123456', 'jandl@gmail.com', 'Invest in your hair, you wear it everyday.', 'hahahahss', 0x313537343934313530395f313736362e6a7067, 1, 2, '2019-11-17 23:27:15'),
+(4, 0, 'BLISSFULLY NOVS', 'Alvear 2 St. Lingayen, Pangasinan', 'Lingayen', '09123456789', 'blissfully@gmail.com', 'HAHA', 'WELCOME PO', 0x313537303732333731395f373535332e6a7067, 1, 2, '2019-11-17 23:27:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service1`
+--
+
+DROP TABLE IF EXISTS `service1`;
+CREATE TABLE IF NOT EXISTS `service1` (
+  `serid` int(11) NOT NULL AUTO_INCREMENT,
+  `sername` varchar(100) NOT NULL,
+  `rate` decimal(15,2) NOT NULL,
+  `duration` time NOT NULL,
+  `descrip` varchar(32765) NOT NULL,
+  `sid` int(11) NOT NULL,
+  `image` blob NOT NULL,
+  `fs` int(30) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`serid`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service1`
+--
+
+INSERT INTO `service1` (`serid`, `sername`, `rate`, `duration`, `descrip`, `sid`, `image`, `fs`) VALUES
+(1, 'Rebond', '899.00', '00:00:00', 'blah blah blah1', 1, 0x313537303936393434345f373934372e6a7067, 0),
+(2, 'Rebonding w/ Hot-oil', '700.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393438395f363135312e6a7067, 0),
+(3, 'Rebonding w/ Cellophane', '1000.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393437325f363633392e6a7067, 0),
+(4, 'Rebonding w/ Keratin', '800.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393530375f363933312e6a7067, 0),
+(5, 'Cellophane w/ Free Haircut', '250.00', '00:00:00', 'blah blah blahsssdsada', 1, 0x313537303936393034365f323438392e6a7067, 1),
+(6, 'Highlights w/ Free Haircut', '250.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393135385f353830362e6a7067, 0),
+(7, 'Haircut w/ Shampoo', '50.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393131365f383338312e6a7067, 1),
+(8, 'Relax w/ Hot-oil', '250.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393533395f373630392e6a7067, 0),
+(9, 'Relax w/ Cellophane', '300.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393532365f343035392e6a7067, 0),
+(10, 'Waving w/ Hot-oil', '300.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393535325f363238382e6a7067, 0),
+(11, 'Hairdye w/ Hot-oil', '250.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393132365f363035302e6a7067, 0),
+(12, 'Hot-oil w/ Free Haircut', '100.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393137315f333735342e6a7067, 0),
+(13, 'Keratin w/ Free Haircut', '199.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393235305f393630322e6a7067, 0),
+(14, 'Hairspa w/ Free Haircut', '150.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393134345f373032322e6a7067, 0),
+(15, 'Ironing w/ Shampoo', '100.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393233335f313334392e6a7067, 0),
+(16, 'Brazilian Blowout', '799.00', '00:00:00', 'blah blah blahs', 1, 0x313537303936383932335f383837302e6a7067, 1),
+(17, 'Manicure', '50.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393331395f333830352e6a7067, 0),
+(18, 'Pedicure', '50.00', '00:00:00', 'blah blah blah', 1, 0x313537303936393339355f373539362e6a7067, 0),
+(19, 'Foot Spa', '200.00', '00:00:00', 'blah blah blahsss11', 1, 0x313537303936393130345f333737312e6a7067, 1),
+(20, 'Haircut', '40.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363533305f343431352e6a7067, 0),
+(21, 'Hairstyle', '100.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363534305f343132382e6a7067, 0),
+(22, 'Hot-oil', '80.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363536335f393635352e6a7067, 0),
+(23, 'Hair Relax', '199.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363530375f353432382e6a7067, 0),
+(24, 'Hair Spa', '150.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363531395f333434362e6a7067, 0),
+(25, 'Hair Color', '350.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363437325f323135322e6a7067, 0),
+(26, 'Cellophane', '350.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363332385f393439322e6a7067, 0),
+(27, 'Keratin', '300.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363632355f393430322e6a7067, 0),
+(28, 'Powerdose', '599.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363637395f333434312e6a7067, 0),
+(29, 'Highlights', '150.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363535335f333238352e6a7067, 0),
+(30, 'Organic Rebond', '499.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363837335f363534312e6a7067, 0),
+(31, 'Brazilian Blowout', '599.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363238365f363734342e6a7067, 0),
+(32, 'Color w/ Brazilian', '999.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363337395f353432362e6a7067, 0),
+(33, 'Brazilian w/ Powerdose / Free ', '999.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363330355f343732372e6a7067, 0),
+(34, 'Color w/ Highlight / Treatment', '999.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363339355f363732322e6a7067, 0),
+(35, 'Rebond w/ Color Brazilian', '1999.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363730305f383431332e6a7067, 0),
+(36, 'Kerabond w/ Color', '2499.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363631325f333530312e6a7067, 0),
+(37, 'Kerabond', '1499.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363539315f373335352e6a7067, 0),
+(39, 'Semi Delino', '499.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363731315f343837342e6a7067, 0),
+(40, 'Ear Candling', '120.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363430365f373035342e6a7067, 0),
+(41, 'Eyelashes Extension', '499.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363431375f383435302e6a7067, 0),
+(42, 'Hair and Make Up', '599.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363436315f363631302e6a7067, 0),
+(43, 'Foot Spa w/ Pedicure', '250.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363433325f383335302e6a7067, 0),
+(44, 'Gel Polish w/ Pedicure', '250.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363434365f353231302e6a7067, 0),
+(45, 'Manicure', '50.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363633385f373037332e6a7067, 0),
+(46, 'Pedicure', '60.00', '00:00:00', 'blah blah blah', 2, 0x313537303936363636335f343237342e6a7067, 0),
+(47, 'Haircut', '50.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303535365f343339372e6a7067, 0),
+(48, 'Shampoo Dry', '50.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303738375f343130352e6a7067, 0),
+(49, 'Manicure', '50.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303538345f323735312e6a7067, 0),
+(50, 'Pedicure', '50.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303631315f343737342e6a7067, 0),
+(51, 'Foot Spa', '150.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303137395f323232382e6a7067, 0),
+(52, 'Nail Art', '100.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303539355f393634382e6a7067, 0),
+(53, 'Eyelashes Extension', '499.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303136355f323834302e6a7067, 0),
+(54, 'Hair Color', '300.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303139305f313830302e6a7067, 0),
+(55, 'Hot-oil', '150.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303537325f383932342e6a7067, 0),
+(56, 'Hair Spa', '200.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303231385f383039372e6a7067, 0),
+(57, 'Cellophane', '300.00', '00:00:00', 'blah blah blah', 3, 0x313537303936393730335f353439332e6a7067, 0),
+(58, 'Semi Di Lino / Piak', '500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303730315f373237342e6a7067, 0),
+(59, 'Powerdose Loreal', '550.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303637315f373538342e6a7067, 0),
+(60, 'Hair Spa Loreal', '500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303237355f393031382e6a7067, 0),
+(61, 'Sumpreme Keratin', '300.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303935335f333438382e6a7067, 0),
+(62, 'Brazilian Treatments', '1000.00', '05:00:00', 'blah blah blah', 3, 0x313537303936393639345f343038312e6a7067, 0),
+(63, 'Hair Straight', '200.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303534325f353432322e6a7067, 0),
+(64, 'Rebond Classic', '1000.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303638385f373336382e6a7067, 0),
+(65, 'Rebond Matrix', '1500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303839375f393639362e6a7067, 0),
+(66, 'Rebond Loreal', '2500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937313237365f353036312e6a7067, 0),
+(67, 'Cellophane Loreal', '500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303031365f343537352e6a7067, 0),
+(68, 'Color Loreal', '500.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303135315f313332362e6a7067, 0),
+(69, 'Hair Do Style / Make Up', '350.00', '00:00:00', 'blah blah blah', 3, 0x313537303937303230345f353334382e6a7067, 0),
+(70, 'Rebond (HIGH END)', '999.00', '00:00:00', 'blah blah', 4, 0x313537303936383738355f323239372e6a7067, 0),
+(71, 'Semi Rebond (HIGH END)', '699.00', '00:00:00', 'blah blah', 4, 0x313537303936383833365f383136372e6a7067, 0),
+(72, 'Brazillian (HIGH END)', '899.00', '00:00:00', 'blah blah', 4, 0x313537303936373438395f323935332e6a7067, 0),
+(73, 'Hair Color (HIGH END)', '499.00', '00:00:00', 'blah blah', 4, 0x313537303936373835325f353036302e6a7067, 0),
+(74, 'Cellophane (HIGH END)', '399.00', '00:00:00', 'blah blah', 4, 0x313537303936373530305f333136342e6a7067, 0),
+(75, 'Hi-Lites (HIGH END)', '799.00', '00:00:00', 'blah blah', 4, 0x313537303936383336385f343635392e6a7067, 0),
+(76, 'Cold Wave (HIGH END)', '699.00', '00:00:00', 'blah blah', 4, 0x313537303936373539365f313638392e6a7067, 0),
+(77, 'Power Dose (HIGH END)', '599.00', '00:00:00', 'blah blah', 4, 0x313537303936383736375f353630342e6a7067, 0),
+(78, 'Hair Cut', '36.00', '00:00:00', 'blah blah', 4, 0x313537303936373838395f343631312e6a7067, 0),
+(79, 'Hair Spa (HIGH END)', '299.00', '00:00:00', 'blah blah', 4, 0x313537303936373939335f373534322e6a7067, 0),
+(80, 'Hair Wax (HIGH END)', '299.00', '00:00:00', 'blah blah', 4, 0x313537303936383235305f343630332e6a7067, 0),
+(81, 'Hot Oil (HIGH END)', '299.00', '00:00:00', 'blah blah', 4, 0x313537303936383338325f323137322e6a7067, 0),
+(82, 'Hair Extension (Human Hair)', '3500.00', '00:00:00', 'blah blah', 4, 0x313537303936373937335f313233342e6a7067, 0),
+(83, 'Ear Candle (HIGH END)', '249.00', '00:00:00', 'blah blah', 4, 0x313537303936373630395f353639372e6a7067, 0),
+(84, 'Threading (HIGH END)', '149.00', '00:00:00', 'blah blah', 4, 0x313537303936383838365f313831352e6a7067, 0),
+(85, 'Armpit (Waxing)', '149.00', '00:00:00', 'blah blah', 4, 0x313537303936373437345f333233362e6a7067, 0),
+(86, 'Legs (Waxing)', '699.00', '00:00:00', 'blah blah', 4, 0x313537303936383433375f343432382e6a7067, 0),
+(87, 'Mustache (Waxing)', '149.00', '00:00:00', 'blah blah', 4, 0x313537303936383531375f313039332e6a7067, 0),
+(88, 'Hair & Make Up (Traditional)', '299.00', '00:00:00', 'blah blah', 4, 0x313537303936373833375f353737312e6a7067, 0),
+(89, 'Hair & Make Up (Air Brushl)', '799.00', '00:00:00', 'blah blah', 4, 0x313537303936373832335f343639382e6a7067, 0),
+(90, 'Eye Lashes Extension (Natural ', '499.00', '00:00:00', 'blah blah', 4, 0x313537303936373633375f373331392e6a7067, 0),
+(91, 'Eye Lashes Extension (Faboulou', '699.00', '00:00:00', 'blah blah', 4, 0x313537303936373632365f373131362e6a7067, 0),
+(92, 'Manicure', '49.00', '00:00:00', 'blah blah', 4, 0x313537303936383436375f393437352e6a7067, 0),
+(93, 'Pedicure', '59.00', '00:00:00', 'blah blah', 4, 0x313537303936383734385f383130342e6a7067, 0),
+(94, 'Gel Polish', '499.00', '00:00:00', 'blah blah', 4, 0x313537303936373830365f373634352e6a7067, 0),
+(95, 'Nail Extension', '999.00', '00:00:00', 'blah blah', 4, 0x313537303936383732385f393932312e6a7067, 0),
+(96, 'Nail Art / Magnetic Cats Eye Polish', '1499.00', '00:00:00', 'blah blah', 4, 0x313537303936383538325f343037302e6a7067, 0),
+(97, 'Hand Paraffin w/ Manicure ', '199.00', '00:00:00', 'blah blah', 4, 0x313537303936383333355f363631332e6a7067, 0),
+(98, 'Foot Paraffin w/ Pedicure', '249.00', '00:00:00', 'blah blah', 4, 0x313537303936373739325f333133352e6a7067, 0),
+(99, 'Foor Spa w/ Pedicure (Magic)', '299.00', '00:00:00', 'blah blah', 4, 0x313537303936373638315f313536312e6a7067, 0),
+(100, 'Foor Spa w/ Pedicure (Basic)', '249.00', '00:00:00', 'blah blah', 4, 0x313537303936373636355f333331352e6a7067, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+DROP TABLE IF EXISTS `staff`;
+CREATE TABLE IF NOT EXISTS `staff` (
+  `stfid` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `dob` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `image` blob NOT NULL,
+  PRIMARY KEY (`stfid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`stfid`, `sid`, `name`, `gender`, `dob`, `address`, `contact`, `city`, `image`) VALUES
+(1, 1, 'Staff1', 'male', '10/03/2019', 'Alvear 2 St. Lingayen, Pangasinan', '09123456789', 'Lingayen', 0x313537343739393732375f363937312e6a7067),
+(2, 1, 'Staff2', 'male', '10/21/2019', 'Alvear 2 St. Lingayen, Pangasinan', '09123456789', 'Lingayen', 0x313537343739393733355f393631362e6a7067);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_availability`
+--
+
+DROP TABLE IF EXISTS `staff_availability`;
+CREATE TABLE IF NOT EXISTS `staff_availability` (
+  `timeid` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `stfid` int(20) NOT NULL,
+  `fro` time NOT NULL,
+  PRIMARY KEY (`timeid`,`sid`,`stfid`,`fro`),
+  KEY `stfid` (`stfid`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff_availability`
+--
+
+INSERT INTO `staff_availability` (`timeid`, `sid`, `stfid`, `fro`) VALUES
+(4, 1, 1, '10:00:00'),
+(5, 1, 1, '11:00:00'),
+(6, 1, 1, '12:00:00'),
+(7, 1, 1, '13:00:00'),
+(8, 1, 1, '17:00:00'),
+(9, 1, 1, '14:00:00'),
+(10, 1, 1, '15:00:00'),
+(11, 1, 1, '16:00:00'),
+(37, 1, 1, '09:00:00'),
+(13, 1, 2, '10:00:00'),
+(14, 1, 2, '11:00:00'),
+(16, 1, 2, '13:00:00'),
+(17, 1, 2, '14:00:00'),
+(18, 1, 2, '15:00:00'),
+(19, 1, 2, '16:00:00'),
+(20, 1, 2, '17:00:00'),
+(24, 1, 2, '12:00:00'),
+(35, 1, 2, '09:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_service`
+--
+
+DROP TABLE IF EXISTS `staff_service`;
+CREATE TABLE IF NOT EXISTS `staff_service` (
+  `stfserid` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `stfid` int(20) NOT NULL,
+  `serid` int(20) NOT NULL,
+  PRIMARY KEY (`stfserid`)
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+DROP TABLE IF EXISTS `status`;
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` int(15) NOT NULL AUTO_INCREMENT,
+  `status` varchar(300) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `status`) VALUES
+(1, 'CONFIRMED'),
+(2, 'CANCELLED'),
+(4, 'DONE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weekdays`
+--
+
+DROP TABLE IF EXISTS `weekdays`;
+CREATE TABLE IF NOT EXISTS `weekdays` (
+  `nod` int(20) NOT NULL,
+  `days` varchar(100) NOT NULL,
+  PRIMARY KEY (`nod`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `weekdays`
+--
+
+INSERT INTO `weekdays` (`nod`, `days`) VALUES
+(1, 'Monday'),
+(2, 'Tuesday'),
+(3, 'Wednesday'),
+(4, 'Thursday'),
+(5, 'Friday'),
+(6, 'Saturday'),
+(7, 'Sunday');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workingtime`
+--
+
+DROP TABLE IF EXISTS `workingtime`;
+CREATE TABLE IF NOT EXISTS `workingtime` (
+  `did` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `nod` int(20) NOT NULL,
+  `weekdays` varchar(100) NOT NULL,
+  `fro` time NOT NULL,
+  `tto` time NOT NULL,
+  PRIMARY KEY (`did`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `workingtime`
+--
+
+INSERT INTO `workingtime` (`did`, `sid`, `nod`, `weekdays`, `fro`, `tto`) VALUES
+(8, 1, 1, 'Monday', '09:00:00', '18:00:00'),
+(9, 1, 2, 'Tuesday', '09:00:00', '18:00:00'),
+(10, 1, 3, 'Wednesday', '09:00:00', '18:00:00'),
+(11, 1, 4, 'Thursday', '09:00:00', '18:00:00'),
+(12, 1, 5, 'Friday', '09:00:00', '18:00:00'),
+(13, 1, 6, 'Saturday', '09:00:00', '18:00:00'),
+(14, 1, 7, 'Sunday', '09:00:00', '18:00:00');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `staff_availability`
+--
+ALTER TABLE `staff_availability`
+  ADD CONSTRAINT `staff_availability_ibfk_1` FOREIGN KEY (`stfid`) REFERENCES `staff` (`stfid`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
